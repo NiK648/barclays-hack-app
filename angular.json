@@ -31,8 +31,7 @@
               "src/custom-theme.scss",
               "src/styles.css"
             ],
-            "scripts": [],
-            "baseHref": "/barclays-hack-app/"
+            "scripts": []
           },
           "configurations": {
             "production": {

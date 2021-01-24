@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    if (!this.cookies.check('user-info')) {
+    if (this.router.url !== 'order' && !this.cookies.check('user-info')) {
       this.router.navigateByUrl('login');
     }
   }

@@ -6,15 +6,15 @@
 <div class="app-container">
 
     <mat-toolbar>
-        <span>Barclay's Books</span>
+        <span (click)="gotolist()">Barclay's Books</span>
         <span class="spacer"></span>
         <button mat-icon-button *ngIf="this.common.showCart" (click)="showCart()">
             <mat-icon>shopping_cart</mat-icon>
         </button>
-        <button mat-icon-button (click)="showOrders()">
+        <!-- <button mat-icon-button *ngIf="this.common.showOrders" (click)="orders()">
             <mat-icon>toc</mat-icon>
-        </button>
-        <button mat-icon-button (click)="logout()">
+        </button> -->
+        <button mat-icon-button (click)="logout()" *ngIf="this.cookies.check('user-info')">
             <mat-icon>power_settings_new</mat-icon>
         </button>
     </mat-toolbar>

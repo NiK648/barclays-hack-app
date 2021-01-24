@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { CartService } from '../cart.service';
+import { CommonService } from '../common.service';
 import { PaymentService } from '../payment.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { PaymentService } from '../payment.service';
 })
 export class CheckoutComponent implements OnInit {
 
-  constructor(private service: PaymentService, public cart: CartService, private cookies: CookieService) { }
+  constructor(private service: PaymentService, public cart: CartService, private cookies: CookieService, private common: CommonService) { }
 
   form!: FormGroup;
   amount: number = 0;
@@ -40,11 +41,12 @@ export class CheckoutComponent implements OnInit {
     temp.items = this.cart.selectedItems;
     temp.count = this.cart.selectedItemCount;
     temp.username = this.userInfo.username;
+    this.common.showLoader = true;
     this.service.createPaymentOrder(temp).subscribe((data: any) => {
-      console.log(data);
       window.location.assign(data.paymentOptions.paymentUrl);
+      this.common.showLoader = false;
     }, err => {
-
+      this.common.showLoader = false;
     });
   }
 

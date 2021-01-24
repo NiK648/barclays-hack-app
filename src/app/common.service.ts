@@ -9,7 +9,7 @@ export class CommonService {
 
   showCart: boolean = false;
 
-  apiURL: string = "http://localhost:8080/barclays-backend";
+  apiURL: string = "https://barclays-backend-app.herokuapp.com/";
 
   constructor() { }
 }

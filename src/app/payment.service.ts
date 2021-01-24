@@ -1,18 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CommonService } from './common.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PaymentService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private common:CommonService) { }
 
   createPaymentOrder(paymentInfo: any) {
-    return this.http.post('http://localhost:8080/barclays-backend/payment', paymentInfo);
+    return this.http.post(this.common.apiURL + '/payment', paymentInfo);
   }
 
   getDetails(paymentId: any) {
-    return this.http.get('http://localhost:8080/barclays-backend/details?paymentId=' + paymentId);
+    return this.http.get(this.common.apiURL + '/details?paymentId=' + paymentId);
   }
 }

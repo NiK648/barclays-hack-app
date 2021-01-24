@@ -11,12 +11,15 @@ export class CartService {
   selectedItemCount: any = {};
 
   constructor(private cookies: CookieService) {
-    let userInfo = JSON.parse(this.cookies.get('user-info'));
-    if (userInfo) {
-      this.selectedItems = userInfo.selectedItems != undefined ? userInfo.selectedItems : [];
-      this.selectedItemCount = userInfo.selectedItemCount != undefined ? userInfo.selectedItemCount : [];
+    if (this.cookies.check("user-info")) {
+      let userInfo = JSON.parse(this.cookies.get('user-info'));
+      if (this.cookies.check("cart-items-" + userInfo.username)) {
+        this.selectedItems = JSON.parse(this.cookies.get("cart-items-" + userInfo.username));
+      }
+      if (this.cookies.check("cart-items-count" + userInfo.username)) {
+        this.selectedItemCount = JSON.parse(this.cookies.get("cart-items-" + userInfo.username));
+      }
     }
-
   }
 
   addItem(item: any) {
@@ -51,8 +54,14 @@ export class CartService {
 
   updateCookie() {
     let userInfo = JSON.parse(this.cookies.get('user-info'));
-    userInfo.selectedItems = this.selectedItems
-    userInfo.selectedItemCount = this.selectedItemCount;
-    this.cookies.set('user-info', JSON.stringify(userInfo), { expires: 2 });
+    if (this.cookies.check("cart-items-" + userInfo.username)) {
+      this.cookies.delete("cart-items" + userInfo.username);
+    }
+    this.cookies.set('cart-items' + userInfo.username, JSON.stringify(this.selectedItems), { expires: 2 });
+
+    if (this.cookies.check("cart-items-count+userInfo.username")) {
+      this.cookies.delete("cart-items-count" + userInfo.username);
+    }
+    this.cookies.set('cart-items-count' + userInfo.username, JSON.stringify(this.selectedItemCount), { expires: 2 });
   }
 }

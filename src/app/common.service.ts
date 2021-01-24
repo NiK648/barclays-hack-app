@@ -11,5 +11,7 @@ export class CommonService {
 
   apiURL: string = "https://barclays-backend-app.herokuapp.com/";
 
+  //apiURL: string = "http://localhost:8080/";
+
   constructor() { }
 }

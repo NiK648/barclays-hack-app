@@ -1,0 +1,39 @@
+<div class="order-content">
+
+    <table>
+
+        <tr>
+            <td>Name:</td>
+            <td>{{order.name}}</td>
+        </tr>
+
+        <tr>
+            <td>Email:</td>
+            <td>{{order.email}}</td>
+        </tr>
+
+        <tr>
+            <td>Phone:</td>
+            <td>{{order.phone}}</td>
+        </tr>
+
+        <tr>
+            <td>Amount:</td>
+            <td>{{order.currency}} {{order.amount}}</td>
+        </tr>
+
+        <tr>
+            <td>Date:</td>
+            <td>{{order.createdAt | date:'medium'}}</td>
+        </tr>
+
+        <tr>
+            <td>Status:</td>
+            <td>{{order.status}}</td>
+        </tr>
+
+    </table>
+    <button mat-raised-button (click)="retry()" *ngIf="order.status != 'completed'">Retry</button>&nbsp;&nbsp;
+    <button mat-raised-button (click)="continue()">Continue</button>
+
+</div>

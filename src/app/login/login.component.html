@@ -1,0 +1,21 @@
+<div class="login-container">
+    <mat-grid-list cols="1" gutterSize="20px" rowHeight="100%">
+        <mat-grid-tile>
+            <form class="login-form">
+                <mat-form-field class="full-width margin-bottom-10">
+                    <mat-label>Username</mat-label>
+                    <input matInput type="text" name="username" [(ngModel)]="user.username" placeholder="Username"
+                        (keyup.enter)="login()" />
+                </mat-form-field>
+
+                <mat-form-field class="full-width margin-bottom-10">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" name="password" [(ngModel)]="user.password" placeholder="Password"
+                        (keyup.enter)="login()" />
+                </mat-form-field>
+
+                <button mat-raised-button type="button" color="primary" (click)="login()">Login</button>
+            </form>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

@@ -1,0 +1,41 @@
+.list-content {
+  width: 100%;
+  height: 100%;
+  background-color: #e7f5ff;
+  border-radius: 5px;
+  overflow-y: auto;
+}
+
+.list-content mat-grid-list {
+  width: 100%;
+}
+
+mat-paginator {
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.list-content p {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 5px;
+  margin: 0;
+}
+
+.list-content p button {
+  width: 50px;
+}
+
+.hidden {
+  display: none;
+}

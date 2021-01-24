@@ -1,0 +1,29 @@
+<div class="app-loader" *ngIf="this.common.showLoader">
+    <mat-spinner [color]="'warning'"></mat-spinner>
+</div>
+
+
+<div class="app-container">
+
+    <mat-toolbar>
+        <span>Barclay's Books</span>
+        <span class="spacer"></span>
+        <button mat-icon-button *ngIf="this.common.showCart" (click)="showCart()">
+            <mat-icon>shopping_cart</mat-icon>
+        </button>
+        <button mat-icon-button (click)="logout()">
+            <mat-icon>power_settings_new</mat-icon>
+        </button>
+    </mat-toolbar>
+
+    <div class="app-content">
+        <router-outlet></router-outlet>
+    </div>
+
+    <mat-toolbar>
+        <span class="spacer"></span>
+        <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a
+                href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+    </mat-toolbar>
+
+</div>

@@ -1,0 +1,41 @@
+<div class="list-content">
+
+    <div style="display: flex;align-items: center;">
+        <mat-form-field appearance="legacy">
+            <mat-label>Search By Name</mat-label>
+            <input matInput placeholder="Search By Name" [(ngModel)]="searchTerm">
+        </mat-form-field>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <button mat-raised-button color="primary" (click)="search()">Search</button>
+        <span class="spacer"></span>
+        <mat-form-field appearance="legacy">
+            <mat-label>Sort by Rating</mat-label>
+            <mat-select [(ngModel)]="sortTerm" (selectionChange)="sortChange($event)">
+                <mat-option value='asc'>
+                    Ascending
+                </mat-option>
+                <mat-option value='desc'>
+                    Descending
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <mat-grid-list [cols]="column" rowHeight="175" gutterSize="5">
+        <mat-grid-tile *ngFor="let book of books">
+            <p>
+                <span>
+                    <img [src]="book.image" style="width: 50px;" />
+                </span>
+                <span>{{book.title}}</span>
+                <span>{{book.authors}}</span>
+                <span>{{book.averageRating}} ({{book.ratingsCount}})</span>
+                <button mat-raised-button color="primary" (click)="addItem(book)">Add</button>
+            </p>
+
+        </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-paginator [ngClass]="{'hidden': books.length == 0}" [pageSize]="20" [pageSizeOptions]="[10, 20, 50]"
+        showFirstLastButtons (page)="pageChange($event)"></mat-paginator>
+</div>

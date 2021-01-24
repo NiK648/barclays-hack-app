@@ -1,0 +1,29 @@
+<div class="register-container">
+    <mat-grid-list cols="1" gutterSize="20px" rowHeight="100%">
+        <mat-grid-tile>
+            <form class="register-form" [formGroup]="register" (ngSubmit)="registerUser()">
+                <mat-form-field appearance="outline" class="full-width margin-bottom-10">
+                    <mat-label>Name</mat-label>
+                    <input matInput placeholder="Name" formControlName="name">
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="full-width margin-bottom-10">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Email" formControlName="email">
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="full-width margin-bottom-10">
+                    <mat-label>Phone</mat-label>
+                    <input matInput placeholder="Phone" formControlName="phone">
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="full-width margin-bottom-10">
+                    <mat-label>Username</mat-label>
+                    <input matInput placeholder="Username" formControlName="username">
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="full-width margin-bottom-10">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" placeholder="Password" formControlName="password">
+                </mat-form-field>
+                <button mat-raised-button color="primary">Register</button>
+            </form>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

@@ -1,0 +1,33 @@
+.app-loader {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: #3785b89c;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  padding: 5px;
+}
+
+.app-container .app-content {
+  width: calc(100vw - 10px);
+  height: calc(100vh - 120px);
+  padding: 5px;
+  margin: 5px 0px;
+  background-color: #e7f5ff;
+  border-radius: 5px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.app-container mat-toolbar {
+  height: 50px;
+}

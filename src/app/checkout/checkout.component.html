@@ -1,0 +1,53 @@
+<div class="checkout-content">
+
+    <form [formGroup]="form" (ngSubmit)="placeOrder()">
+
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Name" formControlName="name" readonly>
+            </mat-form-field>
+        </p>
+
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Email" formControlName="email" readonly>
+            </mat-form-field>
+        </p>
+
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>Phone</mat-label>
+                <input matInput placeholder="Phone" formControlName="phone" readonly>
+            </mat-form-field>
+        </p>
+
+        <h3>Items</h3>
+        <table>
+
+            <tr>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Price per unit</th>
+                <th>Total Amount</th>
+            </tr>
+
+            <tr *ngFor="let item of cart.selectedItems">
+                <td>{{item.title}}</td>
+                <td>{{cart.selectedItemCount[item.id]}}</td>
+                <td>{{item.price}}</td>
+                <td>{{cart.selectedItemCount[item.id]*item.price | currency:'INR'}}</td>
+            </tr>
+
+        </table>
+
+        <p>
+            Amount: {{amount | currency:'INR'}}
+        </p>
+
+        <button mat-raised-button color="primary">Place Order</button>
+
+    </form>
+
+</div>

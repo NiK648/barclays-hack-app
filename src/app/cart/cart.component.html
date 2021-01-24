@@ -1,0 +1,31 @@
+<div class="cart-container">
+
+    <mat-list>
+        <div mat-subheader>Items</div>
+        <mat-list-item *ngFor="let item of cart.selectedItems; let i = index">
+            <mat-icon mat-list-icon>
+                <img [src]="item.image" style="width: 30px;" />
+            </mat-icon>
+            <div mat-line style="display: flex;">
+                <span>{{item.title}}
+                </span>
+                <span class="spacer"></span>
+                <span>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Quantity</mat-label>
+                        <input matInput type="number" placeholder="Quantity"
+                            [(ngModel)]="cart.selectedItemCount[item.id]" (ngModelChange)="changeQuantity($event, item, i)" />
+                    </mat-form-field>
+
+                    <button mat-button (click)="cart.delete(item, i)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </span>
+            </div>
+            <div mat-line></div>
+        </mat-list-item>
+    </mat-list>
+
+    <button mat-raised-button color="primary" (click)="checkout()">Checkout</button>
+
+</div>

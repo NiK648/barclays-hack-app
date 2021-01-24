@@ -16,14 +16,16 @@ export class CheckoutComponent implements OnInit {
   form!: FormGroup;
   amount: number = 0;
 
+  userInfo: any;
+
   ngOnInit(): void {
 
-    let userInfo: any = JSON.parse(this.cookies.get('user-info'));
+    this.userInfo = JSON.parse(this.cookies.get('user-info'));
 
     this.form = new FormGroup({
-      name: new FormControl(userInfo.name),
-      email: new FormControl(userInfo.email),
-      phone: new FormControl(userInfo.phone)
+      name: new FormControl(this.userInfo.name),
+      email: new FormControl(this.userInfo.email),
+      phone: new FormControl(this.userInfo.phone)
     });
 
     for (let i = 0; i < this.cart.selectedItems.length; i++) {
@@ -37,6 +39,7 @@ export class CheckoutComponent implements OnInit {
     let temp = this.form.value;
     temp.items = this.cart.selectedItems;
     temp.count = this.cart.selectedItemCount;
+    temp.username = this.userInfo.username;
     this.service.createPaymentOrder(temp).subscribe((data: any) => {
       console.log(data);
       window.location.assign(data.paymentOptions.paymentUrl);

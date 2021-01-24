@@ -1,0 +1,10 @@
+Barclays-backend: https://github.com/NiK648/barclays-hack-backend
+barclays-frontend: https://github.com/NiK648/barclays-hack-app
+deployment url : https://barclays-hack-app.herokuapp.com/login
+
+Login Username:NiK648
+Password: P@ssw0rd
+
+Stack Used: Angular, Angular Material for frontend
+Java, Spring Boot, Postgres for backend
+Deployed using Heroku

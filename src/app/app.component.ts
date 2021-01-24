@@ -18,8 +18,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     if (!this.cookies.check('user-info')) {
       this.router.navigateByUrl('login');
-    } else {
-      this.router.navigateByUrl('list');
     }
   }
 
@@ -33,6 +31,10 @@ export class AppComponent implements OnInit {
   logout() {
     this.cookies.deleteAll();
     this.router.navigateByUrl('login');
+  }
+
+  showOrders() {
+    this.router.navigateByUrl('orders');
   }
 
 }

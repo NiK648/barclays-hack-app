@@ -7,7 +7,7 @@ import { CommonService } from './common.service';
 })
 export class PaymentService {
 
-  constructor(private http: HttpClient, private common:CommonService) { }
+  constructor(private http: HttpClient, private common: CommonService) { }
 
   createPaymentOrder(paymentInfo: any) {
     return this.http.post(this.common.apiURL + '/payment', paymentInfo);
@@ -15,5 +15,13 @@ export class PaymentService {
 
   getDetails(paymentId: any) {
     return this.http.get(this.common.apiURL + '/details?paymentId=' + paymentId);
+  }
+
+  getOrders(username: any) {
+    return this.http.get(this.common.apiURL + '/orders?username=' + username);
+  }
+
+  updatePaymentId(paymentId: any, transactionId: any) {
+    return this.http.get(this.common.apiURL + '/update?paymentId=' + paymentId + '&transactionId=' + transactionId);
   }
 }

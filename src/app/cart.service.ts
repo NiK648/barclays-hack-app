@@ -16,7 +16,7 @@ export class CartService {
       if (this.cookies.check("cart-items-" + userInfo.username)) {
         this.selectedItems = JSON.parse(this.cookies.get("cart-items-" + userInfo.username));
       }
-      if (this.cookies.check("cart-items-count" + userInfo.username)) {
+      if (this.cookies.check("cart-items-count-" + userInfo.username)) {
         this.selectedItemCount = JSON.parse(this.cookies.get("cart-items-" + userInfo.username));
       }
     }
@@ -55,13 +55,13 @@ export class CartService {
   updateCookie() {
     let userInfo = JSON.parse(this.cookies.get('user-info'));
     if (this.cookies.check("cart-items-" + userInfo.username)) {
-      this.cookies.delete("cart-items" + userInfo.username);
+      this.cookies.delete("cart-items-" + userInfo.username);
     }
-    this.cookies.set('cart-items' + userInfo.username, JSON.stringify(this.selectedItems), { expires: 2 });
+    this.cookies.set('cart-items-' + userInfo.username, JSON.stringify(this.selectedItems), { expires: 2 });
 
-    if (this.cookies.check("cart-items-count+userInfo.username")) {
-      this.cookies.delete("cart-items-count" + userInfo.username);
+    if (this.cookies.check("cart-items-count-"+userInfo.username)) {
+      this.cookies.delete("cart-items-count-" + userInfo.username);
     }
-    this.cookies.set('cart-items-count' + userInfo.username, JSON.stringify(this.selectedItemCount), { expires: 2 });
+    this.cookies.set('cart-items-count-' + userInfo.username, JSON.stringify(this.selectedItemCount), { expires: 2 });
   }
 }

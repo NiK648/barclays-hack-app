@@ -6,5 +6,5 @@ phases:
   build:
     commands:
       - echo build started on 'date'
-      - npm
+      - npm install
       - npm build
